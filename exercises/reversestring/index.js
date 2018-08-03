@@ -44,9 +44,7 @@ function final_reverse(str) {
 }
 
 function reverse(str) {
-  let strArr = str.split("");
-
-  return strArr.reduce( (acc, cur) => acc = cur + acc, "")
+  return str.split("").reduce( (acc, cur) => acc = cur + acc, "")
 }
 
 module.exports = reverse;
