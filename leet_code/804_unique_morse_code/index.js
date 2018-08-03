@@ -5,15 +5,24 @@ const transformToMorseCode = (words) => {
 
   alphabet.map( (letter, i) => mapped[letter] = morse[i] );
 
-  return words.map( (word) => {
-    let arr = word.split('');
-    let morse = "";
+  let morseArr = words.reduce( (acc, cur, i) => {
+    let arr = cur.split('');
+    let transformation = (arr.reduce( (inacc, incur) => inacc = inacc + mapped[incur], ""));
 
-    return arr.reduce( (acc, cur) => acc += mapped[cur], "");
-  }).length;
+    if (acc.indexOf(transformation) === -1) {
+
+      acc.push(transformation)
+      return acc;
+    }
+    else {
+      return acc;
+    }
+  }, []);
+
+  return morseArr.length;
 }
 
-let words = ["hello", "goodbye", "hi", "whattheforshizzle"];
+let words = ["gin", "zen", "gig", "msg"];
 
 console.log(transformToMorseCode(words))
 module.exports = transformToMorseCode;
