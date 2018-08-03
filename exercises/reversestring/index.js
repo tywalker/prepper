@@ -38,7 +38,7 @@ function third_reverse(str) {
 function reverse(str) {
   let revStr = "";
 
-  for(let i = str.length - 1; i >= 0; i --) { revStr += str[i] }
+  for (let i of str) { revStr = i + revStr }
 
   return revStr;
 }
