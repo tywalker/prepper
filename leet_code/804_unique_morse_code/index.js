@@ -1,32 +1,43 @@
-const transformToMorseCode = (words) => {
-  let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
-  let morse = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
-  let mapped = {};
+let words = ["gin", "zen", "gig", "msg"];
 
-  alphabet.map( (letter, i) => mapped[letter] = morse[i] );
+const transformToMorseCode = (words) => {
+  let mapped = makeMap();
 
   let morseArr = words.reduce( (acc, cur, i) => {
     let arr = cur.split('');
-    let transformation = (arr.reduce( (inacc, incur) => inacc = inacc + mapped[incur], ""));
 
-    if (acc.indexOf(transformation) === -1) {
+    let transformation = generateTransformation(arr);
 
-      acc.push(transformation)
-      return acc;
-    }
-    else {
-      return acc;
-    }
+    addTransformation(acc, transformation);
   }, []);
 
   return morseArr.length;
 }
 
-const isInArray = (transformation) => {
+const makeMap = () => {
+  let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  let morse = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+  let mapped = {};
 
+  alphabet.map( (letter, i) => mapped[letter] = morse[i] );
+
+  return mapped;
 }
 
-let words = ["gin", "zen", "gig", "msg"];
+const generateTransformation = (arr) =>  {
+  return arr.reduce( (inacc, incur) => inacc = inacc + mapped[incur], ""));
+}
+
+const addTransformation = (wordArr, transformation) => {
+  if (wordArr.indexOf(transformation)) {
+    wordArr.push(transformation);
+
+    return wordArr;
+  }
+  else {
+    return wordArr;
+  }
+}
 
 console.log(transformToMorseCode(words))
 module.exports = transformToMorseCode;
