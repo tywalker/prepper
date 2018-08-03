@@ -13,4 +13,10 @@ function palindrome(str) {
   return rev === str ? true : false;
 }
 
+function udemy_palindrome(str) {
+  const rev = str.split('').reverse().join('');
+
+  return rev === str ? true : false;
+}
+
 module.exports = palindrome;
