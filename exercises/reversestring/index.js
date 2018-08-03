@@ -27,10 +27,18 @@ function second_reverse(str) {
   return revStr;
 }
 
-function reverse(str) {
+function third_reverse(str) {
   let revStr = "";
 
   str.split("").reverse().map( x => revStr += x );
+
+  return revStr;
+}
+
+function reverse(str) {
+  let revStr = "";
+
+  for(let i = str.length - 1; i >= 0; i --) { revStr += str[i] }
 
   return revStr;
 }
