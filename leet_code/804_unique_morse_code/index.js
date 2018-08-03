@@ -22,6 +22,10 @@ const transformToMorseCode = (words) => {
   return morseArr.length;
 }
 
+const isInArray = (transformation) => {
+
+}
+
 let words = ["gin", "zen", "gig", "msg"];
 
 console.log(transformToMorseCode(words))
