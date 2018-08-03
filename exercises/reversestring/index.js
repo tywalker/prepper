@@ -35,12 +35,18 @@ function third_reverse(str) {
   return revStr;
 }
 
-function reverse(str) {
+function final_reverse(str) {
   let revStr = "";
 
   for (let i of str) { revStr = i + revStr }
 
   return revStr;
+}
+
+function reverse(str) {
+  let strArr = str.split("");
+
+  return strArr.reduce( (acc, cur) => acc = cur + acc, "")
 }
 
 module.exports = reverse;
