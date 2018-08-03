@@ -17,12 +17,20 @@ function first_reverse(str) {
   return revStr;
 }
 
-function reverse(str) {
+function second_reverse(str) {
   let strArr = str.split("");
   let revArr = strArr.reverse();
   let revStr = "";
 
   revArr.map( x => revStr += x);
+
+  return revStr;
+}
+
+function reverse(str) {
+  let revStr = "";
+
+  str.split("").reverse().map( x => revStr += x );
 
   return revStr;
 }
