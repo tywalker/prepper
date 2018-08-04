@@ -10,6 +10,7 @@
 
 function chunk(array, size) {
   let chunked = [];
+
   for (let i = 0; i <= array.length; i = i + size) {
     if (array.slice(i, i + size).length > 0) {
       chunked.push(array.slice(i, i + size));
