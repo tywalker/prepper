@@ -65,6 +65,11 @@ describe('GetLast', () => {
     l.insertFirst(1);
     expect(l.getLast()).toEqual({ data: 2, next: null });
   });
+
+  test('returns null if list is empty', () => {
+    const l = new List();
+    expect(l.getLast()).toEqual(null);
+  })
 });
 
 describe('Clear', () => {
@@ -104,7 +109,7 @@ describe('RemoveFirst', () => {
   });
 });
 
-describe.skip('RemoveLast', () => {
+describe('RemoveLast', () => {
   test('RemoveLast removes the last node when list is empty', () => {
     const l = new List();
     expect(() => {
