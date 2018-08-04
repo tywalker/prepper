@@ -111,26 +111,46 @@ class LinkedList {
     if (!this.head) { return null; }
     if (n === 0) { this.head = this.head.next; }
 
-    let count = 0;
-    let prevNode = null;
-    let node = this.head;
-    let nextNode = null;
-    if (node) { nextNode = node.next; }
+    let node = this.getAt(n);
 
-    // node -> removeNode -> shiftNodeLeft
-    while(count < n) {
-      // count == 0 : null, count == 1 : 0
-      prevNode = node;
-      // 0, 1
-      node = nextNode;
-      // 1, 2
-      if (node) { nextNode = node.next }
-      else { nextNode = null };
-      count++;
+    if (node === null) {
+      return node;
     }
 
-    prevNode ? prevNode.next = nextNode : null;
+    let prevNode = this.getAt(n - 1);
+    prevNode.next = node.next;
+
+    /**
+     * SOOOOOOOOOO BADDDDDDDDDDDDDDD
+     */
+    // if (!this.head) { return null; }
+    // if (n === 0) { this.head = this.head.next; }
+    //
+    // let count = 0;
+    // let prevNode = null;
+    // let node = this.head;
+    // let nextNode = null;
+    // if (node) { nextNode = node.next; }
+    //
+    // while(count < n) {
+    //   prevNode = node;
+    //   node = nextNode;
+    //
+    //   // if node doesn't exist assign null to next node
+    //   if (node) {
+    //     nextNode = node.next
+    //   }
+    //   else {
+    //     nextNode = null
+    //   };
+    //   count++;
+    // }
+    //
+    // // node -> removeNode -> shiftNodeLeft
+    // prevNode ? prevNode.next = nextNode : null;
   }
+
+  
 }
 
 module.exports = { Node, LinkedList };
