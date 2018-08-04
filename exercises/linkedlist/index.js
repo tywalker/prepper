@@ -53,23 +53,26 @@ class LinkedList {
   }
 
   removeFirst() {
+    if (!this.head) { return; }
     this.head = this.head.next;
   }
 
   removeLast() {
+    if (!this.head) { return; }
+    if (!this.head.next) {
+      this.head = null;
+      return;
+    }
+
     let prevNode = null;
     let node = this.head;
 
-    if (node) {
-      while(node.next) {
-        prevNode = node;
-        node = node.next;
-      }
-      prevNode ? prevNode.next = null : this.head = null;
+    while(node.next) {
+      prevNode = node;
+      node = node.next;
     }
-    else {
-      return null;
-    }
+
+    prevNode.next = null;
   }
 }
 
