@@ -5,7 +5,7 @@
 // maxChar("abcccccccd") === "c"
 // maxChar("apple 1231111") === "1"
 
-function maxChar(str) {
+function first_maxChar(str) {
   let map = {};
   str.split('').map( (cur) => {
     map[cur]
@@ -16,7 +16,7 @@ function maxChar(str) {
   let keys = Object.keys(map);
   let values = Object.values(map);
   let max = Math.max(...values);
-  let answer = null;
+  let answer;
 
   keys.map( key => {
     if (map[key] === max) {
@@ -25,6 +25,15 @@ function maxChar(str) {
   });
 
   return answer;
+}
+
+function maxChar(str) {
+  let mapped = {};
+  str.split('').map( (cur, i) => {
+    mapped[cur] ? mapped[cur] += 1 : mapped[cur] = 1;
+  })
+  let max = Math.max(...Object.values(mapped));
+  return Object.keys(mapped).find( key => mapped[key] === max );
 }
 
 module.exports = maxChar;
