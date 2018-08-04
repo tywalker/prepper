@@ -91,20 +91,19 @@ class LinkedList {
   }
 
   getAt(n) {
-    if (!this.head) { return null; }
     let count = 0;
     let node = this.head;
+    if (!this.head) { return null; }
 
-    if (n === 0) {
-      return node;
-    }
+    while(node) {
+      if (count === n) {
+        return node;
+      }
 
-    while(count < n) {
-      node = node.next;
       count++;
+      node = node.next;
     }
-
-    return node;
+    return null;
   }
 
   removeAt(n) {
@@ -118,39 +117,35 @@ class LinkedList {
     }
 
     let prevNode = this.getAt(n - 1);
-    prevNode.next = node.next;
-
-    /**
-     * SOOOOOOOOOO BADDDDDDDDDDDDDDD
-     */
-    // if (!this.head) { return null; }
-    // if (n === 0) { this.head = this.head.next; }
-    //
-    // let count = 0;
-    // let prevNode = null;
-    // let node = this.head;
-    // let nextNode = null;
-    // if (node) { nextNode = node.next; }
-    //
-    // while(count < n) {
-    //   prevNode = node;
-    //   node = nextNode;
-    //
-    //   // if node doesn't exist assign null to next node
-    //   if (node) {
-    //     nextNode = node.next
-    //   }
-    //   else {
-    //     nextNode = null
-    //   };
-    //   count++;
-    // }
-    //
-    // // node -> removeNode -> shiftNodeLeft
-    // prevNode ? prevNode.next = nextNode : null;
+    if (prevNode) {
+      prevNode.next = node.next;
+    }
   }
 
-  
+  insertAt(data, n) {
+    let newNode = new Node(data);
+    if (!this.head) {
+      this.head = newNode
+      return;
+    }
+    if (n === 0) {
+      newNode.next = this.head;
+      this.head = newNode;
+      return;
+    }
+
+    let curNode = this.getAt(n - 1);
+    let nextNode = this.getAt(n);
+
+    if (curNode) {
+      curNode.next = newNode;
+      newNode.next = nextNode;
+    }
+    else {
+      newNode.next = null;
+      this.insertLast(newNode.data);
+    }
+  }
 }
 
 module.exports = { Node, LinkedList };
