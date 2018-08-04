@@ -20,8 +20,8 @@ describe('A Node', () => {
 
 describe('A LinkedList', () => {
   test('has property head', () => {
-    const list = new List();
-    expect(list.head).toEqual(null);
+    const l = new List();
+    expect(l.head).toEqual(null);
   })
 })
 
@@ -35,7 +35,7 @@ describe('Insert First', () => {
   });
 });
 
-describe.skip('Size', () => {
+describe('Size', () => {
   test('returns the number of items in the linked list', () => {
     const l = new List();
     expect(l.size()).toEqual(0);
