@@ -27,12 +27,20 @@ function first_maxChar(str) {
   return answer;
 }
 
-function maxChar(str) {
+function second_maxChar(str) {
   let mapped = {};
   str.split('').map( (cur, i) => {
     mapped[cur] ? mapped[cur] += 1 : mapped[cur] = 1;
   })
   let max = Math.max(...Object.values(mapped));
+  return Object.keys(mapped).find( key => mapped[key] === max );
+}
+
+function maxChar(str) {
+  let mapped = {};
+  str.split('').map( cur => { mapped[cur] ? mapped[cur] += 1 : mapped[cur] = 1 })
+  let max = Math.max(...Object.values(mapped));
+
   return Object.keys(mapped).find( key => mapped[key] === max );
 }
 
