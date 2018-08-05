@@ -146,6 +146,18 @@ class LinkedList {
       this.insertLast(newNode.data);
     }
   }
+
+  forEach(callback, node = undefined) {
+    if (node === undefined) { node = this.head };
+
+    while(node) {
+      callback(node);
+
+      node = node.next;
+
+      return this.forEach(callback, node);
+    }
+  }
 }
 
 module.exports = { Node, LinkedList };
