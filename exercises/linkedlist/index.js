@@ -147,15 +147,16 @@ class LinkedList {
     }
   }
 
-  forEach(callback, node = undefined) {
+  forEach(callback, node = undefined, index = 0) {
     if (node === undefined) { node = this.head };
 
     while(node) {
       callback(node);
 
       node = node.next;
+      index++;
 
-      return this.forEach(callback, node);
+      return this.forEach(callback, node, index);
     }
   }
 }
