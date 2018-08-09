@@ -12,10 +12,13 @@ defmodule RS do
   end
 
   def reverse_string(str) do
-    if is_integer(str) do
-      convert_string = Integer.to_string(str)
+    string = if is_integer(str) do
+      Integer.to_string(str)
+    else
+      str
     end
-    split_string(convert_string || string)
+
+    split_string(string)
     |> iter_string("")
   end
 end
