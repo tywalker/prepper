@@ -10,7 +10,7 @@ defmodule RSTest do
   end
 
   test "should return 'No string given if no argument'" do
-    assert RS.reverse_string("")  == "No string given."
+    assert RS.reverse_string([:hello])  == "No string given."
   end
 
   test "should reverse numbers" do
